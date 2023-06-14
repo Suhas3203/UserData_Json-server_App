@@ -1,0 +1,62 @@
+.demo-table {
+    width: 100%;
+  }
+  
+  .demo-button-container {
+    padding-bottom: 16px;
+  }
+  
+  .demo-button + .demo-button {
+    margin-left: 8px;
+  }
+  
+  .example-label-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 10px 0;
+    max-width: 284px;
+  }
+  
+  .records-found {
+          margin-left: 180px;
+  }  
+  
+  mat-slider {
+    width: 120px;
+  }
+
+  th{
+    text-align: center;
+    height: 100px;
+    min-width: 120px;
+  }
+
+  td{
+    text-align: center;
+  }
+  .mat-column-phone{
+    min-width: 180px;
+  }
+
+  .mat-column-birthDate{
+    min-width: 140px;
+  }
+
+  .mat-column-actions {
+    min-width: 250px;
+  }
+  /* .mat-column-phone {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 70% !important;
+  width: 47% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+} */

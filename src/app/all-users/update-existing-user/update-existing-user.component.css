@@ -1,0 +1,29 @@
+/* Add some padding to the form */
+form {
+    padding: 16px;
+  }
+  
+  /* Style the mat-form-field inputs */
+  mat-form-field {
+    width: 40%;
+    
+    margin-bottom: 16px;
+    
+  }
+  
+  /* Add some spacing between the inputs */
+  mat-form-field + mat-form-field {
+    margin-top: 16px;
+  }
+  
+  /* Style the Cancel button */
+  button[mat-button] {
+    margin-right: 8px;
+  }
+  
+  /* Style the Save button */
+  button[color="primary"] {
+    background-color: #2196f3;
+    color: #fff;
+  }
+  

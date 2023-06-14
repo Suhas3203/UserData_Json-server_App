@@ -1,0 +1,14 @@
+
+  /*  header  */
+
+  body i {
+    font-family:'FontAwesome'!important;
+    }
+
+.active{
+    text-decoration: underline;
+}
+
+.navbar{
+  background-color: hsla(109, 30%, 57%, 0.9);
+}

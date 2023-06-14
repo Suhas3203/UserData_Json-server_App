@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title
+      >{{ person.firstName }} {{ person.lastName }}</mat-card-title
+    >
+    <mat-card-subtitle>{{ person.username }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://intentplanning.ca/wp-content/uploads/2019/01/sample-person.jpg"
+    alt="Photo of the person"
+  />
+  <mat-card-content>
+    <p><strong>Age:</strong> {{ person.age }}</p>
+    <p><strong>Gender:</strong> {{ person.gender }}</p>
+    <p><strong>Email:</strong> {{ person.email }}</p>
+    <p><strong>Phone:</strong> {{ person.phone }}</p>
+    <p><strong>Birthdate:</strong> {{ person.birthDate }}</p>
+    <p><strong>Blood Group:</strong> {{ person.bloodGroup }}</p>
+    <p><strong>Height:</strong> {{ person.height }} cm</p>
+    <p><strong>Weight:</strong> {{ person.weight }} kg</p>
+  </mat-card-content>
+</mat-card>

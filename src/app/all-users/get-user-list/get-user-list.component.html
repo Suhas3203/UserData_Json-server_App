@@ -1,0 +1,429 @@
+<a routerLink="/dashboard">
+  <button
+    mat-icon-button
+    color="primary"
+    title="back to Home"
+    aria-label="button with a home icon"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+</a>
+<form [formGroup]="inputForm">
+  <div class="demo-button-container">
+    <br />
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openDialogForAdd()"
+      class="demo-button"
+      style="margin-left: 70px"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        class="bi bi-plus-square-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"
+        />
+      </svg>
+      Add Data
+    </button>
+  </div>
+  <h2 style="text-align: center; background-color: rgb(190, 248, 236)">
+    <strong> All Users Data </strong>
+  </h2>
+  <table
+    mat-table
+    matSort
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 demo-table"
+  >
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>
+        <div>No.</div>
+        <div>
+          <input
+            matInput
+            name="id"
+            class="search_id"
+            (keyup)="getAllFilter($event)"
+            placeholder="search by Id..."
+            formControlName="id"
+          />
+        </div>
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- firstName Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef>
+        First Name
+        <input
+          name="firstName"
+          class="search_firstName"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by First Name..."
+          formControlName="firstName"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+    </ng-container>
+
+    <!-- maidenName Column -->
+    <ng-container matColumnDef="maidenName">
+      <th mat-header-cell *matHeaderCellDef>
+        Middle Name
+        <input
+          name="maidenName"
+          class="search_maidenName"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Maiden Name..."
+          formControlName="maidenName"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.maidenName }}</td>
+    </ng-container>
+
+    <!-- lastName Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef>
+        Last Name
+        <input
+          name="lastName"
+          class="search_lastName"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Last Name..."
+          formControlName="lastName"
+        />
+      </th>
+      <!--(keydown)="getAllFilter($event)"    -->
+      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef>
+        Age
+        <mat-slider
+          class="example-margin"
+          [disabled]="disabled"
+          (input)="getAllFilter($event)"
+          [max]="max"
+          [min]="min"
+          [step]="step"
+          [discrete]="thumbLabel"
+          [showTickMarks]="showTicks"
+        >
+          <input matSliderStartThumb formControlName="age" />
+          <input
+            matSliderEndThumb
+            name="max"
+            [value]="max"
+            value="max"
+            (input)="getMaxValue($event)"
+          />
+        </mat-slider>
+        <!-- <mat-slider
+          min="18"
+          max="60"                
+          (keyup)="getAllFilter($event)"
+          formControlName="age"
+          showTickMarks
+          discrete
+          [displayWith]="formatLabel"
+        >
+          <input value="" matSliderStartThumb />
+          <input value="" matSliderEndThumb />
+        </mat-slider> -->
+        <!-- <input          step="2"
+          name="age"
+          class="search_age"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Age..."
+          formControlName="age"
+        /> -->
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>
+        Gender
+        <mat-form-field appearance="fill" style="height: 70px">
+          <!-- <mat-label>Choose one</mat-label> -->
+          <mat-select
+            (selectionChange)="getAllFilter($event)"
+            formControlName="gender"
+          >
+            <!-- <mat-option value="default">default</mat-option>        aria-selected="'default'"-->
+            <mat-option value=""> Default </mat-option>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <input
+          name="gender"
+          class="search_gender"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Gender..."
+          formControlName="gender"
+        /> -->
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>
+        Email
+        <input
+          name="email"
+          class="search_email"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Email..."
+          formControlName="email"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <!-- Phone Number Column -->
+    <ng-container matColumnDef="phone" class="col col-md-5">
+      <th mat-header-cell *matHeaderCellDef>
+        Phone No.
+        <input
+          name="phone"
+          class="search_phone"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Phone Number..."
+          formControlName="phone"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>
+        Username
+        <input
+          name="username"
+          class="search_username"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by username..."
+          formControlName="username"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <!-- Password Column -->
+    <ng-container matColumnDef="password">
+      <th mat-header-cell *matHeaderCellDef>
+        Password
+        <input
+          name="password"
+          class="search_password"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Password..."
+          formControlName="password"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.password }}</td>
+    </ng-container>
+
+    <!-- BirthDate Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef>
+        Birth Date
+        <mat-form-field appearance="fill">
+          <mat-label>Select Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="dp3"
+            (dateInput)="getAllFilter($event)"
+            formControlName="birthDate"
+            [disabled]="true"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dp3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <!-- <input
+          name="birthDate"
+          class="search_birthDate"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Birth Date..."
+          formControlName="birthDate"
+        /> -->
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.birthDate }}</td>
+    </ng-container>
+
+    <!-- BloodGroup Column -->
+    <ng-container matColumnDef="bloodGroup">
+      <th mat-header-cell *matHeaderCellDef>
+        Blood Group
+        <input
+          name="bloodGroup"
+          class="search_bloodGroup"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Blood Group..."
+          formControlName="bloodGroup"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.bloodGroup }}</td>
+    </ng-container>
+
+    <!-- Height Column -->
+    <ng-container matColumnDef="height">
+      <th mat-header-cell *matHeaderCellDef>
+        Height
+        <input
+          name="height"
+          class="search_height"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Height..."
+          formControlName="height"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.height }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef>
+        Weight
+        <input
+          name="weight"
+          class="search_weight"
+          (keyup)="getAllFilter($event)"
+          matInput
+          placeholder="search by Weight..."
+          formControlName="weight"
+        />
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          type="submit"
+          class="btn btn-primary btn-md"
+          title="Edit"
+          style="margin: 10px"
+          (click)="openDialogForUpdate(element.id)"
+        >
+          <!-- (click)="myFunctionForUpdate($event, i, user)" -->
+          <!-- Edit -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-pen"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="submit"
+          class="btn btn-danger btn-md"
+          title="Delete"
+          (click)="deleteAUser(element.id)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trash"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"
+            />
+            <path
+              d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"
+            />
+          </svg>
+          <!-- Delete -->
+        </button>
+        <!-- (click)="deleteARecord(i)" -->
+        <button
+          type="submit"
+          class="btn btn-info btn-md"
+          title="Get Details"
+          style="margin-left: 10px"
+          (click)="openDialogForDetails(element.id)"
+        >
+          <!-- (click)="getEmployeeDetails(i)" -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+          <!-- Get Details -->
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <!-- | paginate : { itemsPerPage: 5, currentPage: p } -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4" style="text-align: right">
+        <h2>
+          <strong>
+            <span class="records-found">No Records Found ...!</span>
+            <span class="records-found">No Records Found ...!</span>
+          </strong>
+        </h2>
+      </td>
+    </tr>
+  </table>
+</form>
+<!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+<br /><br />
+<mat-paginator
+  [length]="id"
+  [pageSizeOptions]="[5, 10, 20, 30, id]"
+  showFirstLastButtons
+>
+</mat-paginator>

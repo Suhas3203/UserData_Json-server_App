@@ -1,0 +1,205 @@
+<h2 mat-dialog-title>Update User</h2>
+<!--[formGroup]="updateForm"  formControlName="id" -->
+<form (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        readonly
+        name="id"
+        placeholder="Id (readonly) :- "
+        [(ngModel)]="data.id"
+        style="width: auto"
+      />
+    </mat-form-field>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        [(ngModel)]="data.firstName"
+      />
+      <!-- formControlName="firstName" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="lastName"
+        [(ngModel)]="data.lastName"
+        placeholder="Last Name"
+      />
+      <!-- formControlName="lastName" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="maidenName"
+        [(ngModel)]="data.maidenName"
+        placeholder="Maiden Name"
+      />
+      <!-- formControlName="maidenName" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        name="age"
+        [(ngModel)]="data.age"
+        placeholder="Age"
+      />
+      <!-- formControlName="age" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select name="gender" [(ngModel)]="data.gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender">{{
+          gender
+        }}</mat-option>
+        <!-- formControlName="gender" -->
+      </mat-select>
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="email"
+        name="email"
+        [(ngModel)]="data.email"
+        placeholder="Email"
+      />
+      <!-- formControlName="email" -->
+      <mat-error>
+        pattern matches any string that contains an '@' symbol followed by a
+        domain name with at least two characters separated by a dot
+      </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        name="phone"
+        [(ngModel)]="data.phone"
+        placeholder="Phone"
+      />
+      <!-- formControlName="phone" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        name="username"
+        [(ngModel)]="data.username"
+        placeholder="Username"
+      />
+      <!-- formControlName="username" -->
+      <mat-error>
+        <ul>
+          <li>
+            pattern matches any string that contains only alphanumeric
+            characters and underscores.
+          </li>
+          <li>
+            It Should be in between 5 and 20 characters long, and does not
+            contain any spaces or special characters
+          </li>
+        </ul>
+      </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        name="password"
+        [(ngModel)]="data.password"
+        placeholder="Password"
+      />
+      <!-- formControlName="password" -->
+      <mat-error>
+        <ul>
+          <li>
+            pattern matches any string that is at least 8 characters long,
+          </li>
+          <li>
+            Should contains at least one uppercase letter, one lowercase letter,
+            one numeric digit, and one special character, and does not contain
+            any whitespace characters.
+          </li>
+        </ul>
+      </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="date"
+        name="birthDate"
+        [(ngModel)]="data.birthDate"
+        placeholder="Birth Date"
+      />
+      <!-- formControlName="birthDate" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <mat-label>Blood Group</mat-label>
+      <mat-select name="bloodGroup" [(ngModel)]="data.bloodGroup">
+        <mat-option
+          *ngFor="let bloodGroup of bloodGroups"
+          [value]="bloodGroup"
+          >{{ bloodGroup }}</mat-option
+        >
+        <!-- formControlName="bloodGroup" -->
+      </mat-select>
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        name="height"
+        [(ngModel)]="data.height"
+        placeholder="Height"
+      />
+      <!-- formControlName="height" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-form-field>
+      <input
+        matInput
+        type="number"
+        name="weight"
+        [(ngModel)]="data.weight"
+        placeholder="Weight"
+      />
+      <!-- formControlName="weight" -->
+      <mat-error> This field is required </mat-error>
+    </mat-form-field>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" type="submit">
+      <!--  -->
+      Update
+    </button>
+  </mat-dialog-actions>
+</form>

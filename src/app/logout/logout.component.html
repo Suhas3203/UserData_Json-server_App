@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <div class="row">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Thumbs-up-icon.svg/819px-Thumbs-up-icon.svg.png"
+      alt="thanks_image"
+      style="width: 200px; height: 200px; margin: 10px auto"
+    />
+    <div class="col-md-8 offset-md-2">
+      <div class="card p-3">
+        <h2 class="text-center mb-4">Thank you for using our app!</h2>
+        <p class="text-center">
+          Your session has been successfully logged out.
+        </p>
+        <div class="text-center mt-4">
+          <a href="/" class="btn btn-primary mr-2">Return to login</a>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-toggle="modal"
+            data-target="#feedbackModal"
+          >
+            Provide feedback
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Feedback Modal -->
+<div
+  class="modal fade"
+  id="feedbackModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="feedbackModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="feedbackModalLabel">Provide Feedback</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="feedbackName">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="feedbackName"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="feedbackEmail">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="feedbackEmail"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="feedbackMessage">Message</label>
+            <textarea
+              class="form-control"
+              id="feedbackMessage"
+              rows="3"
+            ></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
